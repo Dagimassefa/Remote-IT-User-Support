@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('Department');
             $table->integer('OfficeNo');
             $table->string('ItemName');
-            $table->string('ItemID')->primary();
+            $table->id('ItemID');
             $table->string('Catagory');
             $table->longText('Reason');
             $table->string('ApprovedByEmail')->unique();
