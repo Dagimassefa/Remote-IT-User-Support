@@ -1,8 +1,14 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\AssignEmployeeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ChartController;
+use Chatify\Http\Middleware\Authenticate;
+use Chatify\Http\Middleware\Messages;
+use Chatify\Http\Middleware\MessagesLoad;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,8 +71,14 @@ Route::get('/view-feedback', function () {
 Route::get('/change-password', function () {
     return view('Admin.change-password');
 });
+Route::get('/add-teamleader', function () {
+    return view('Admin.add-teamleader');
+});
 Route::get('/add-tech', function () {
     return view('TeamLeader.add-tech');
+});
+Route::get('/assign-tech', function () {
+    return view('TeamLeader.assign-tech');
 });
 Route::get('/new-support-request', function () {
     return view('TeamLeader.new-support-request');
@@ -138,3 +150,116 @@ Route::get('/guest-ai', function () {
 Auth::routes(['verify' => true]);
 
 Route::get('/welcome', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::any('/Admin', [AssignEmployeeController::class, 'AssignEmployee']);
+Route::post('/change-password', [HomeController::class, 'updatepassword'])->name('update-password');
+Route::post('/change-password-teamleader', [HomeController::class, 'updatepasswordteamleader'])->name('update-password-team');
+Route::post('/change-password-tech', [HomeController::class, 'updatepasswordtech'])->name('update-password-technecians');
+Route::post('/change-password-user', [HomeController::class, 'updatepassworduser'])->name('update-password-user');
+//users table and request table
+Route::post('/feedback', [HomeController::class, 'sendfeedback'])->name('send-feedback');
+Route::post('/add-teamleader', [HomeController::class, 'addteamleader'])->name('add-teamleader');
+Route::post('/register-team-leader', [HomeController::class, 'registerteamleader'])->name('register-teamleader');
+Route::post('/add-tech', [HomeController::class, 'addtech'])->name('add-tech');
+Route::post('/assign-tech', [HomeController::class, 'assigntech'])->name('assign-tech');
+Route::post('/generate-report-admin', [HomeController::class, 'admingeneratereport'])->name('admin-generate-report');
+Route::post('/generate-report-leader', [HomeController::class, 'admingeneratereport'])->name('teamleader-generate-report');
+Route::post('/generate-report-tech', [HomeController::class, 'admingeneratereport'])->name('tech-generate-report');
+Route::post('/add-out-of-use-devices', [HomeController::class, 'outofusedevices'])->name('out-of-use');
+Route::post('/submit-support-request', [HomeController::class, 'supportrequest'])->name('support-request');
+Route::post('/document-findings', [HomeController::class, 'documentfindings'])->name('tech-document-findings');
+
+Route::get('/view-feedback', function () {
+    // Fetch data from the MySQL table
+    $data = DB::table('feedbacks')->get();
+
+    // Return the data to the view
+    return view('Admin.view-feedback', ['data' => $data]);
+});
+Route::get('/view-request-status', function () {
+    // Fetch data from the MySQL table
+    $data = DB::table('support_requests')->where('Email', Auth::user()->email)->get();
+
+
+    // Return the data to the view
+    return view('StaffMembers.view-request-status', ['data' => $data]);
+});
+
+Route::post('/view-request-status', [HomeController::class, 'cancelrequest'])->name('cancel_request');
+Route::get('/view-task', function () {
+    // Fetch data from the MySQL table
+    // $users = DB::table('users')->where('votes', '<>', 100)->get();
+    $data_support = DB::table('support_requests')->get();
+
+
+    // Return the data to the view
+    return view('Technicians.view-task', ['data_support' => $data_support]);
+});
+Route::post('/view-task', [HomeController::class, 'solvedrequest'])->name('solved_request');
+
+// Route::post('/view-task', [HomeController::class, 'addmeetinglink'])->name('add_meeting');
+// Route::post('/view-request-status', [HomeController::class, 'cancelrequest'])->name('cancel_request');
+Route::get('/new-support-request', function () {
+    // Fetch data from the MySQL table
+    $supportdata = DB::table('support_requests')->where('SupportStatus', 'pending')->get();
+
+    // Return the data to the view
+    return view('TeamLeader.new-support-request', ['supportdata' => $supportdata]);
+});
+Route::get('/list-of-out-of-use-devices', function () {
+    // Fetch data from the MySQL table
+    $outofuse = DB::table('out_of_use_devices')->get();
+
+    // Return the data to the view
+    return view('TeamLeader.list-of-out-of-use-devices', ['outofuse' => $outofuse]);
+});
+Route::get('/solved-request', function () {
+    // Fetch data from the MySQL table
+    $solvedrequests = DB::table('support_requests')->where('SupportStatus', 'Solved')->get();
+
+    // Return the data to the view
+    return view('TeamLeader.solved-request', ['solvedrequests' => $solvedrequests]);
+});
+Route::get('/unsolved-request', function () {
+    // Fetch data from the MySQL table
+    $unsolvedrequests = DB::table('support_requests')->where('SupportStatus', 'pending')->get();
+
+    // Return the data to the view
+    return view('TeamLeader.unsolved-request', ['unsolvedrequests' => $unsolvedrequests]);
+});
+Route::get('/view-report', function () {
+    // Fetch data from the MySQL table
+    $datas = DB::table('report')->where('Title', 'TeamLeader')->get();
+
+    // Return the data to the view
+    return view('Admin.view-report', ['datas' => $datas]);
+});
+Route::get('/view-report-leader', function () {
+    // Fetch data from the MySQL table
+    $datas = DB::table('report')->where('Title', 'Technician')->get();
+
+    // Return the data to the view
+    return view('TeamLeader.view-report-leader', ['datas' => $datas]);
+});
+Route::get('/go-to-chat', function () {
+    return redirect()->away('https://chat.1410inc.xyz/');
+})->name('go-to-chat');
+
+
+Route::get('/add-meeting-link', function () {
+    return view('Technicians.add-meeting-link');
+});
+// Route::post('/document-findings', [HomeController::class, 'documentfindings'])->name('tech-document-findings');
+Route::post('/add-meeting-link', [HomeController::class, 'addmeetinglink'])->name('meetinglink');
+
+
+
+// Route::get('/chart', function () {
+//     return view('Admin.chart');
+// });
+
+// Route::get('/statics', function () {
+//     return view('Admin.statics');
+// });
+
+// Route::get('/staticss', [ChartController::class, 'showStatics']);
+Route::get('/statics', [ChartController::class, 'showStaticsLeader']);
