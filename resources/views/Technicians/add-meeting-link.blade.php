@@ -9,7 +9,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-
+  <script src="https://cdn.tailwindcss.com"></script> 
   <title>@yield('title')</title>
 <base href="{{ \URL::to('/') }}">
 <link
@@ -187,102 +187,69 @@ referrerpolicy="no-referrer"
                with font-awesome or any other icon font library -->
     
           <li class="nav-item">
-            <a href="/add-tech" class="nav-link ">
+            <a href="/view-task" class="nav-link ">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Add a New Technician
+                View Task
                 
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="/assign-tech" class="nav-link">
+            <a href="/document-findings" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Assign Technician
+                Document Findings
                 
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="/new-support-request" class="nav-link active">
+            <a href="/add-out-of-use-devices" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                New Support Request List
+                Add Out of Use Devices
                 
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="/list-of-out-of-use-devices" class="nav-link">
+            <a href="/generate-report-tech" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                List of Out of Use Devices
-                
-              </p>
-            </a>
-          </li>
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link ">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Number of Requests
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/solved-request" class="nav-link ">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Solved Requests</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/unsolved-request" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Unsolved Requests</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link ">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Report
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/view-report-leader" class="nav-link ">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>View Report</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/generate-report-leader" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Generate Report</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="/change-password-teamleader" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-               Change Password
+                Generate Report
                 
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="/statics" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Statistics</p>
+            <a href="/technician-ai" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Train AI Bot
+                
+              </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="/change-password-tech" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Change Password
+                
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/add-meeting-link" class="nav-link active">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Add Meeting Link
+                
+              </p>
+            </a>
+          </li>
+         
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -292,66 +259,50 @@ referrerpolicy="no-referrer"
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!doctype html>
-    <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-          #customers {
-            font-family: Arial, Helvetica, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-          }
-          
-          #customers td, #customers th {
-            border: 1px solid #ddd;
-            padding: 8px;
-          }
-          
-          #customers tr:nth-child(even){background-color: #f2f2f2;}
-          
-          #customers tr:hover {background-color: #ddd;}
-          
-          #customers th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: left;
-            background-color: lightblue;
-            color: white;
-          }
-          </style>
-        <script src="https://cdn.tailwindcss.com"></script>
-    </head>
-    <body class=" overflow flex items-center justify-center" style="background: #edf2f7;">
-      <h1 class="font-semibold text-xl text-gray-600" style="margin:10px">New Support Request</h1>
-{{-- FullName, Email, FacultyName, Department, OfficeNo, photo, PhoneNo, Date, SupportStatus, RequestNo, user_id --}}
-      <table id="customers" style="margin-left:15px;margin-right:25px;margin-top:15px " >
-        <tr>
-          <th>FullName</th>
-          <th>Email</th>
-          <th>Faculty Name</th>
-          <th>Department</th>
-          <th>Office No</th>
-          <th>Request No</th>
-        </tr>
-        
-          @foreach ($supportdata as $row)
-          <tr>
-            <td>{{ $row->FullName }}</td>
-            <td>{{ $row->Email }}</td>
-            <td>{{ $row->FacultyName }}</td>
-            <td>{{ $row->Department }}</td>
-            <td>{{ $row->OfficeNo }}</td>
-            <td>{{ $row->RequestNo}}</td>
+    <div class="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
+        <div class="container max-w-screen-lg mx-auto">
+          <div>
+            <h2 class="font-semibold text-xl text-gray-600">Add Meeting Link</h2>
+           
       
-          </tr>
-        @endforeach
-       
-      </table>
-    </body>
-    </html>
+            <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
+              <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
+                <div class="text-gray-600">
+                  <p class="font-medium text-lg" style="padding-left:40px;">Add Meething Link For The Request</p>
+                  <img src="{{asset('images/meeting1.png')}}" alt="sideimage" style="border-radius: 20px">
+                </div>
+      
+                <div class="lg:col-span-2">
+                  <form action="{{ route('meetinglink') }}" method="post">
+                    @csrf
+                  <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
+                    <div class="md:col-span-5">
+                      <label for="full_name">Request ID</label>
+                      <input type="number" name="requestid" placeholder="please enter the request ID" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
+                     
+                    </div>
+      
+                    <div class="md:col-span-5">
+                        <label for="full_name">Meeting Link</label>
+                        <input type="text" name="meetinglink" id="full_name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Enter the meeting link "/>
+                      </div>
+                    <div class="md:col-span-5 text-right">
+                      <div class="inline-flex items-end">
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+                      </div>
+                    </div>
+                    {{-- <a href="{{ route('go-to-chat') }}" target="_blank"><button>Initiate Chat</button></a> --}}
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          
+        </div>
+      </div>
+    <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 

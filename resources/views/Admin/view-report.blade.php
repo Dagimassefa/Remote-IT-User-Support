@@ -6,6 +6,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html lang="en">
 <head>
+  
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -186,12 +187,17 @@ referrerpolicy="no-referrer"
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-    
+               <li class="nav-item">
+                <a href="/add-teamleader" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add TeamLeader</p>
+                </a>
+              </li>
           <li class="nav-item">
             <a href="/register-team-leader" class="nav-link ">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Add New Team Leader
+               Assign TeamLeader
                 
               </p>
             </a>
@@ -207,7 +213,7 @@ referrerpolicy="no-referrer"
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/view-report" class="nav-link active">
+                <a href="/view-report" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Report</p>
                 </a>
@@ -222,7 +228,7 @@ referrerpolicy="no-referrer"
             </ul>
           </li>
           <li class="nav-item">
-            <a href="/view-feedback" class="nav-link">
+            <a href="/view-feedback" class="nav-link active">
               <i class="far fa-circle nav-icon"></i>
               <p>View Feedback</p>
             </a>
@@ -233,6 +239,12 @@ referrerpolicy="no-referrer"
               <p>Change Password</p>
             </a>
           </li>
+          {{-- <li class="nav-item">
+            <a href="/statics" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Statistics</p>
+            </a>
+          </li> --}}
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -249,42 +261,89 @@ referrerpolicy="no-referrer"
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+          #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+          }
+          
+          #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+          }
+          
+          #customers tr:nth-child(even){background-color: #f2f2f2;}
+          
+          #customers tr:hover {background-color: #ddd;}
+          
+          #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: lightblue;
+            color: white;
+          }
+          </style>
     </head>
     <body class=" overflow flex items-center justify-center" style="background: #edf2f7;">
-        <div class="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
-          <div class="container max-w-screen-lg mx-auto">
-            <div>
-                <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
-                <script>
-                    var xValues = ["CNCS", "CoBE", "Main Campus", "AAIT", "EIABC"];
-                    var yValues = [55, 49, 44, 24, 15];
-                    var barColors = ["red", "green","blue","orange","brown"];
-                    
-                    new Chart("myChart", {
-                      type: "bar",
-                      data: {
-                        labels: xValues,
-                        datasets: [{
-                          backgroundColor: barColors,
-                          data: yValues
-                        }]
-                      },
-                      options: {
-                        legend: {display: false},
-                        title: {
-                          display: true,
-                          text: "AAU Campus Report of Maintenance Unit"
-                        }
-                      }
-                    });
-                    </script>
-                    
+      <div class="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
+    <div class="container max-w-screen-lg mx-auto">
+      <div>
+         
+          <h2 class="font-semibold text-xl text-gray-600">View Report</h2>
+          <div class="flex flex-col">
+              <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                  <div class="overflow-hidden">
+                    <table class="min-w-full text-center">
+                      <thead class="border-b">
+                        <tr>
+                          <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
+                            Email
+                          </th>
+                          <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
+                            Role
+                          </th>
+                          <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
+                            Request Number
+                          </th>
+                          
+                          <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
+                             Summary
+                          </th>
+                          <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
+                            Date
+                          </th>
+                          
+                          
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @foreach ($datas as $row)
+                          <tr>
+                            <td>{{ $row->Email }}</td>
+                            <td>{{ $row->Title }}</td>
+                            <td>{{ $row->ReportNo }}</td>
+                            <td>{{ $row->summary }}</td>
+                            <td>{{ $row->Date }}</td>
+                           
+
+                          </tr>
+                        @endforeach
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
             </div>
-        
-            
-          </div>
+</div>
+  
+      
     </div>
-    </body>
+  </div>
+  </body>
     </html>
   </div>
   <!-- /.content-wrapper -->

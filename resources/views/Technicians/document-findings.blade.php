@@ -240,6 +240,15 @@ referrerpolicy="no-referrer"
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="/add-meeting-link" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Add Meeting Link
+                
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -263,161 +272,46 @@ referrerpolicy="no-referrer"
                 </div>
       
                 <div class="lg:col-span-2">
+                  <form action="{{ route('tech-document-findings') }}" method="post">
+                    @csrf
                   <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
-                    <div class="md:col-span-5">
-                      <label for="full_name">Reported By: Name</label>
-                      <input type="text" name="full_name" id="full_name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="{{ Auth::user()->name }}" disabled/>
+                   
+               
+                    <div class="md:col-span-2">
+                      <label for="city">User ID</label>
+                      <input type="text" name="userid" id="city" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="{{ Auth::user()->id }}" disabled />
+                    </div>
+                    <div class="md:col-span-3">
+                      <label for="address">Problem Status</label>
+                      <input type="text" name="status" id="address" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Problem Status" />
                     </div>
                     <div class="md:col-span-5">
-                      <label for="full_name">E-mail</label>
-                      <input type="email" name="full_name" id="full_name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="{{ Auth::user()->email }}" disabled/>
+                      <label for="address">End Result</label>
+                      <input type="text" name="result" id="address" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="End Result" />
                     </div>
-                  
-                   
-                   
+                    <div class="md:col-span-3">
+                      <label for="address">Request Number</label>
+                      <input type="text" name="request" id="address" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Request Number" />
+                    </div>
       
-                    <div class="md:col-span-2">
-                      <label for="city">Campus Name</label>
-                      <input type="text" name="city" id="city" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Campus Name" />
-                    </div>
-                    <div class="md:col-span-3">
-                      <label for="address">Department</label>
-                      <input type="text" name="address" id="address" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Department" />
-                    </div>
-                    <div class="md:col-span-3">
-                      <label for="floor">Floor / Office</label>
-                      <input type="text" name="floor" id="floor" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Floor, Office number" />
-                    </div>
-                    <div class="md:col-span-2">
-                      <label for="country">Tel</label>
-                      <input type="tel" name="address" id="address" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Phone No." />
-                    </div>
                     
-                    <div class="md:col-span-3">
-                      <label for="state">Date</label>
-                      <div class="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
-                          <input type="date" id="start" name="trip-start"
-                          value="<?php echo date('Y-m-d'); ?>"
-                          >
-                      </div>
-                    </div>
-                    <div class="md:col-span-2">
-                        <label for="country">Time</label>
-                        <input type="time" name="address" id="address" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Time" />
-                      </div>
-                      <div class="md:col-span-5">
-                        <h3 class="mb-4 font-semibold text-gray-900 dark:text-white">Problem Type</h3>
-                        <ul class="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                            <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-                                <div class="flex items-center pl-3">
-                                    <input id="vue-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                    <label for="vue-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"> Hardware</label>
-                                </div>
-                            </li>
-                            <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-                                <div class="flex items-center pl-3">
-                                    <input id="react-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                    <label for="react-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Virus Attack</label>
-                                </div>
-                            </li>
-                            <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-                                <div class="flex items-center pl-3">
-                                    <input id="angular-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                    <label for="angular-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Internet</label>
-                                </div>
-                            </li>
-                            <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-                                <div class="flex items-center pl-3">
-                                    <input id="angular-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                    <label for="angular-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">E-Mail</label>
-                                </div>
-                            </li>
-                            <li class="w-full dark:border-gray-600">
-                                <div class="flex items-center pl-3">
-                                    <input id="laravel-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                    <label for="laravel-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Other</label>
-                                </div>
-                            </li>
-                            
-                        </ul>
-        </div>
-   
+                    
+                    
       
-                    <div class="md:col-span-5">
-                      <label for="city">Problem Description</label>
-                      <textarea name="" id="" cols="30" rows="5" class="h-30 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="Write a short description of the problem..." style="resize: none;"></textarea>
-                     
-                    </div>
-                    <div class="md:col-span-5">
-                        <h3 class="mb-4 font-semibold text-gray-900 dark:text-white">Severity Level</h3>
-                        <ul class="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                            <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-                                <div class="flex items-center pl-3">
-                                    <input id="vue-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                    <label for="vue-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"> Faculty Level</label>
-                                </div>
-                            </li>
-                            <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-                                <div class="flex items-center pl-3">
-                                    <input id="react-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                    <label for="react-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Department Level</label>
-                                </div>
-                            </li>
-                            <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-                                <div class="flex items-center pl-3">
-                                    <input id="angular-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                    <label for="angular-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Staff Level</label>
-                                </div>
-                            </li>
-                           
-                            
-                        </ul>
-        </div>
-      
-        <div class="md:col-span-3">
-            <label for="email">Problem Assigned To</label>
-            <input type="text" name="email" id="email" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="{{ Auth::user()->name }}" disabled />
-          </div>
+  
         <div class="md:col-span-2">
             <label for="country">At</label>
-            <input type="time" name="address" id="address" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="22:53:05"  disabled/>
+            <input type="datetime-local" name="at" id="address" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
           </div>
           <div class="md:col-span-5">
             <label for="country">Assignment Completed At</label>
-            <input type="time" name="address" id="address" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="24:53:05"  disabled/>
+            <input type="datetime-local" name="completed" id="address" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"/>
           </div>
           <div class="md:col-span-5">
             <label for="city">Problem Findings</label>
-            <textarea name="" id="" cols="30" rows="8" class="h-30 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="Write a short description of the problem..." style="resize: none;"></textarea>
+            <textarea name="finding" id="" cols="30" rows="8" class="h-30 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="Write a short description of the problem..." style="resize: none;"></textarea>
            
           </div>
-          <div class="md:col-span-5">
-            <h3 class="mb-4 font-semibold text-gray-900 dark:text-white">End Result</h3>
-            <ul class="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-                    <div class="flex items-center pl-3">
-                        <input id="vue-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                        <label for="vue-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Solved</label>
-                    </div>
-                </li>
-                <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-                    <div class="flex items-center pl-3">
-                        <input id="react-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                        <label for="react-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Escalated</label>
-                    </div>
-                </li>
-                <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-                    <div class="flex items-center pl-3">
-                        <input id="angular-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                        <label for="angular-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Unsolved</label>
-                    </div>
-                </li>
-               
-                
-            </ul>
-</div>
-
-            
                     <div class="md:col-span-5 text-right">
                       <div class="inline-flex items-end">
                         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Report Findings</button>
@@ -425,6 +319,7 @@ referrerpolicy="no-referrer"
                     </div>
       
                   </div>
+                  </form>
                 </div>
               </div>
             </div>

@@ -196,6 +196,15 @@ referrerpolicy="no-referrer"
             </a>
           </li>
           <li class="nav-item">
+            <a href="/assign-tech" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Assign Technician
+                
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="/new-support-request" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
@@ -265,6 +274,12 @@ referrerpolicy="no-referrer"
                Change Password
                 
               </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/statics" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Statistics</p>
             </a>
           </li>
         </ul>

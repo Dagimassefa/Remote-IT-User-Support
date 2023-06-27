@@ -196,6 +196,15 @@ referrerpolicy="no-referrer"
             </a>
           </li>
           <li class="nav-item">
+            <a href="/assign-tech" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Assign Technician
+                
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="/new-support-request" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
@@ -268,6 +277,12 @@ referrerpolicy="no-referrer"
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="/statics" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Statistics</p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -286,6 +301,7 @@ referrerpolicy="no-referrer"
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body class=" overflow flex items-center justify-center" style="background: #edf2f7;">
+      @include('flash-message')
         <div class="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
           <div class="container max-w-screen-lg mx-auto">
             <div>
@@ -300,50 +316,46 @@ referrerpolicy="no-referrer"
                   </div>
         
                   <div class="lg:col-span-2">
+                    <form action="{{ route('teamleader-generate-report') }}" method="post">
+                      @csrf
                     <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
+                      
                       <div class="md:col-span-5">
-                        <label for="full_name">First Name</label>
-                        <input type="text" name="full_name" id="full_name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="First Name"/>
-                      </div>
-                      <div class="md:col-span-5">
-                        <label for="full_name">Last Name</label>
-                        <input type="text" name="full_name" id="full_name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Last Name"/>
+                        <label for="last_name">Full Name</label>
+                        <input type="text" name="fullname" id="full_name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="{{Auth::user()->name  }}" disabled/>
                       </div>
                       <div class="md:col-span-5">
                         <label for="email">Email Address</label>
-                        <input type="email" name="email" id="email" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Email Address" />
+                        <input type="email" name="email" id="email" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="{{Auth::user()->email  }}" disabled />
                       </div>
                      
-                      <div class="md:col-span-3">
-                        <label for="address">Position / Title</label>
-                        <input type="text" name="address" id="address" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Position" />
+                      <div class="md:col-span-2">
+                        <label for="city">Position / Title</label>
+                        <select name="position" id="pos" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50">
+                          <option value="TeamLeader">Team Leader</option>
+                        </select>
+                        @error('position')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                @enderror
                       </div>
         
-                      <div class="md:col-span-2">
+                      <div class="md:col-span-3">
                         <label for="city">Campus Name</label>
-                        <input type="text" name="city" id="city" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Campus Name" />
+                        <input type="text" name="campus_name" id="city" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Campus Name" />
                       </div>
                       <div class="md:col-span-5">
                         <label for="email">Department</label>
-                        <input type="text" name="floor" id="floor" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Department" />
+                        <input type="text" name="dep" id="floor" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Department" />
                       </div>
-                      <div class="md:col-span-3">
+                      <div class="md:col-span-5">
                         <label for="country">Tel</label>
-                        <input type="tel" name="address" id="address" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Telephone No." />
+                        <input type="tel" name="tel" id="address" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Telephone No." />
                       </div>
         
-                      <div class="md:col-span-2">
-                        <label for="state">Date</label>
-                        <div class="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
-                            <input type="date" id="start" name="trip-start"
-                            value="<?php echo date('Y-m-d'); ?>"
-                            >
-                        </div>
-                      </div>
         
                       <div class="md:col-span-5">
                         <label for="city">Report Summary</label>
-                        <textarea name="" id="" cols="30" rows="10" class="h-30 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="Write a short summary of the report..." style="resize: none;"></textarea>
+                        <textarea name="reports" id="" cols="30" rows="10" class="h-30 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="Write a short summary of the report..." style="resize: none;"></textarea>
                        
                       </div>
         
@@ -357,6 +369,7 @@ referrerpolicy="no-referrer"
                       </div>
         
                     </div>
+                    </form>
                   </div>
                 </div>
               </div>

@@ -205,7 +205,7 @@ referrerpolicy="no-referrer"
             </a>
           </li>
           <li class="nav-item">
-            <a href="/add-out-of-use-devices" class="nav-link active">
+            <a href="/add-out-of-use-devices" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Add Out of Use Devices
@@ -240,6 +240,15 @@ referrerpolicy="no-referrer"
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="/add-meeting-link" class="nav-link active">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Add Meeting Link
+                
+              </p>
+            </a>
+          </li>
          
         </ul>
       </nav>
@@ -264,50 +273,41 @@ referrerpolicy="no-referrer"
                 </div>
       
                 <div class="lg:col-span-2">
+                  <form action="{{ route('out-of-use') }}" method="post">
+                    @csrf
                   <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                     <div class="md:col-span-5">
                       <label for="full_name">Campus Name</label>
-                      <input type="text" name="full_name" id="full_name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Campus Name"/>
+                      <input type="text" name="campus_name" id="full_name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Campus Name"/>
                     </div>
       
                     <div class="md:col-span-5">
                         <label for="full_name">Department</label>
-                        <input type="text" name="full_name" id="full_name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Department "/>
+                        <input type="text" name="dep" id="full_name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Department "/>
                       </div>
                       <div class="md:col-span-5">
                         <label for="full_name">Office Number</label>
-                        <input type="text" name="full_name" id="full_name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Office Number "/>
+                        <input type="text" name="office_no" id="full_name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Office Number "/>
                       </div>
-                    <div class="md:col-span-3">
-                      <label for="address">Item Number</label>
-                      <input type="text" name="address" id="address" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Item Number of The Device" />
-                    </div>
       
-                    <div class="md:col-span-2">
+                    <div class="md:col-span-5">
                       <label for="city">Item Name</label>
-                      <input type="text" name="city" id="city" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Item Name of The Device" />
+                      <input type="text" name="item_name" id="city" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Item Name of The Device" />
                     </div>
                     <div class="md:col-span-5">
                       <label for="email">Catagory of The Device</label>
-                      <input type="text" name="floor" id="floor" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="The Kind of the Device e.g: Printer,Computer" />
+                      <input type="text" name="catagory" id="floor" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="The Kind of the Device e.g: Printer,Computer" />
                     </div>
-                    <div class="md:col-span-3">
+                    <div class="md:col-span-5">
                       <label for="country">Approved By</label>
-                      <input type="text" name="address" id="address" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="{{ Auth::user()->name }}" disabled />
+                      <input type="text" name="approved_by" id="address" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="{{ Auth::user()->name }}" disabled />
                     </div>
       
-                    <div class="md:col-span-2">
-                      <label for="state">Date</label>
-                      <div class="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
-                          <input type="date" id="start" name="trip-start"
-                          value="<?php echo date('Y-m-d'); ?>"
-                          >
-                      </div>
-                    </div>
+                    
       
                     <div class="md:col-span-5">
                         <label for="city">Reason</label>
-                        <textarea name="" id="" cols="30" rows="10" class="h-30 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="State The Reason" style="resize: none;"></textarea>
+                        <textarea name="reason" id="" cols="30" rows="10" class="h-30 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="State The Reason" style="resize: none;"></textarea>
                        
                       </div>
       
@@ -321,6 +321,7 @@ referrerpolicy="no-referrer"
                     </div>
       
                   </div>
+                  </form>
                 </div>
               </div>
             </div>

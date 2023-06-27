@@ -9,7 +9,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-
+  <style>
+    #customers {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    #customers td, #customers th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    
+    #customers tr:nth-child(even){background-color: #f2f2f2;}
+    
+    #customers tr:hover {background-color: #ddd;}
+    
+    #customers th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: lightblue;
+      color: white;
+    }
+    </style>
   <title>@yield('title')</title>
 <base href="{{ \URL::to('/') }}">
 <link
@@ -196,6 +219,15 @@ referrerpolicy="no-referrer"
             </a>
           </li>
           <li class="nav-item">
+            <a href="/assign-tech" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Assign Technician
+                
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="/new-support-request" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
@@ -268,6 +300,12 @@ referrerpolicy="no-referrer"
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="/statics" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Statistics</p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -286,238 +324,31 @@ referrerpolicy="no-referrer"
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body class=" overflow flex items-center justify-center" style="background: #edf2f7;">
-        <div class="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
-      <div class="container max-w-screen-lg mx-auto">
-        <div>
-           
-            <h2 class="font-semibold text-xl text-gray-600">List of Out of Use Devices</h2>
-            <div class="flex flex-col">
-                <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                  <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-                    <div class="overflow-hidden">
-                      <table class="min-w-full text-center">
-                        <thead class="border-b">
-                          <tr>
-                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
-                                E-mail
-                            </th>
-                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
-                                Department
-                            </th>
-                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
-                                Office Number
-                            </th>
-                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
-                                Support Request Date At
-                            </th>
-                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
-                                Support Request Time At
-                              </th>
-                              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
-                                User Status Report
-                              </th>
-                              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
-                                Technician Status Report
-                              </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr class="border-b bg-red-100 border-red-200">
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Technician1@aau.edu.et
-                            </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Management
-                              </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                202
-                              </td>
-                              <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                12/04/2021
-                              </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                08:04 AM
-                            </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                Unsolved
-                            </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                Unsolved
-                            </td>
-                          </tr>
-                          <tr class="border-b bg-red-100 border-red-200">
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Technician2@aau.edu.et
-                            </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Accounting
-                              </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                204
-                              </td>
-                              <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                12/05/2021
-                              </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                08:14 AM
-                            </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                Unsolved
-                            </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                Solved
-                            </td>
-                          </tr>
-                          <tr class="border-b bg-red-100 border-red-200">
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Technician3@aau.edu.et
-                            </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Management
-                              </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                302
-                              </td>
-                              <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                12/05/2021
-                              </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                08:24 AM
-                            </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                Solved
-                            </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                Unsolved
-                            </td>
-                          </tr>
-                          <tr class="border-b bg-red-100 border-red-200">
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Technician4@aau.edu.et
-                            </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Accounting
-                              </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                402
-                              </td>
-                              <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                12/06/2021
-                              </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                08:34 AM
-                            </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                Unsolved
-                            </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                Unsolved
-                            </td>
-                          </tr>
-                          <tr class="border-b bg-red-100 border-red-200">
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Technician5@aau.edu.et
-                            </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Management
-                              </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                412
-                              </td>
-                              <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                12/07/2021
-                              </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                08:44 AM
-                            </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                Unsolved
-                            </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                Unsolved
-                            </td>
-                          </tr>
-                          <tr class="border-b bg-red-100 border-red-200">
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Technician6@aau.edu.et
-                            </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Accounting
-                              </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                202
-                              </td>
-                              <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                12/08/2021
-                              </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                08:54 AM
-                            </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                Unsolved
-                            </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                Unsolved
-                            </td>
-                          </tr>
-                          <tr class="border-b bg-red-100 border-red-200">
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Technician7@aau.edu.et
-                            </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Accounting
-                              </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                502
-                              </td>
-                              <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                12/09/2021
-                              </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                08:54 AM
-                            </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                Unsolved
-                            </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                Unsolved
-                            </td>
-                          </tr>
-                          <tr class="border-b bg-red-100 border-red-200">
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Technician8@aau.edu.et
-                            </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Management
-                              </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                512
-                              </td>
-                              <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                12/10/2021
-                              </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                09:04 AM
-                            </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                Unsolved
-                            </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                Unsolved
-                            </td>
-                          </tr>
-                          
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-</div>
-    
-        
-      </div>
-    </div>
+      <h1 class="font-semibold text-xl text-gray-600" style="margin:10px">List of Unsolved Requests</h1>
+      {{-- FullName, Email, FacultyName, Department, OfficeNo, photo, PhoneNo, Date, SupportStatus, RequestNo, user_id --}}
+            <table id="customers" style="margin-left:15px;margin-right:25px;margin-top:15px " >
+              <tr>
+                <th>Email</th>
+                <th>Faculty Name</th>
+                <th>Department</th>
+                <th>Office No</th>
+                <th>Request No</th>
+                <th>User ID</th>
+              </tr>
+              
+                @foreach ($unsolvedrequests as $row)
+                <tr>
+                  <td>{{ $row->Email }}</td>
+                  <td>{{ $row->FacultyName }}</td>
+                  <td>{{ $row->Department }}</td>
+                  <td>{{ $row->OfficeNo }}</td>
+                  <td>{{ $row->RequestNo }}</td>
+                  <td>{{ $row->user_id}}</td>
+            
+                </tr>
+              @endforeach
+             
+            </table>
     </body>
     </html>
   </div>

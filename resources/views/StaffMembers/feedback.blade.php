@@ -11,6 +11,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
   <title>@yield('title')</title>
 <base href="{{ \URL::to('/') }}">
 <link
@@ -245,6 +247,7 @@ referrerpolicy="no-referrer"
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body class=" overflow flex items-center justify-center" style="background: #edf2f7;">
+      @include('flash-message')
         <div class="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
       <div class="container max-w-screen-lg mx-auto">
         <div>
@@ -259,20 +262,26 @@ referrerpolicy="no-referrer"
               </div>
     
               <div class="lg:col-span-2">
+                <form action="{{ route('send-feedback') }}" method="POST">
+                  @csrf
                 <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                   <div class="md:col-span-5">
+                    <label for="full_name">Request ID</label>
+                    <input type="text" name="request_id" id="full_name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="Enter The Request ID"/>
+                  </div>
+                  <div class="md:col-span-5">
                     <label for="full_name">Name</label>
-                    <input type="text" name="full_name" id="full_name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="{{ Auth::user()->name }}" disabled/>
+                    <input type="text" name="full_name" id="full_name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="{{Auth::user()->name  }}" disabled/>
                   </div>
     
                   <div class="md:col-span-5">
                     <label for="email">Email Address</label>
-                    <input type="email" name="email" id="email" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="{{ Auth::user()->email }}" disabled />
+                    <input type="email" name="email" id="email" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="{{Auth::user()->email  }}" disabled/>
                   </div>
                  
                   <div class="md:col-span-5">
                     <label for="city">Comment</label>
-                    <textarea name="" id="" cols="30" rows="10" class="h-30 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="Write your comment here..." style="resize: none;"></textarea>
+                    <textarea name="comments" id="" cols="30" rows="10" class="h-30 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="Write your comment here..." style="resize: none;"></textarea>
                    
                   </div>
           
@@ -283,6 +292,7 @@ referrerpolicy="no-referrer"
                   </div>
     
                 </div>
+              </form>
               </div>
             </div>
           </div>

@@ -185,12 +185,17 @@ referrerpolicy="no-referrer"
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-    
+               <li class="nav-item">
+                <a href="/add-teamleader" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add TeamLeader</p>
+                </a>
+              </li>
           <li class="nav-item">
-            <a href="/register-team-leader" class="nav-link active">
+            <a href="/register-team-leader" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Add New Team Leader
+                Assign TeamLeader
                 
               </p>
             </a>
@@ -232,6 +237,12 @@ referrerpolicy="no-referrer"
               <p>Change Password</p>
             </a>
           </li>
+          {{-- <li class="nav-item">
+            <a href="/statics" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Statistics</p>
+            </a>
+          </li> --}}
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

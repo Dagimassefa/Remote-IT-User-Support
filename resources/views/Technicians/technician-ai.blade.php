@@ -49,20 +49,20 @@
         <input id="signup_password" type="password" class="form-control" placeholder="Password" required="required">
       </div>
       <div class="form-group">
-        <!-- <button type="submit" class="btn btn-block">Sign Up</button> -->
+         <button type="submit" class="btn btn-block">Sign Up</button>
       </div>
-      <!-- <div class="clearfix">
+      <div class="clearfix">
         <p class="text-center login_link">Login</p>
-      </div> -->
+      </div> 
     </form>
   </div>
 
   <div class="logged" style="display: none;">
     <li class="dropdown" style="list-style: none;">
       <a href="#" class="dropdown-toggle userOptions" data-toggle="dropdown"><span></span> <b class="caret"></b></a>
-      <!-- <ul class="dropdown-menu">
+       <ul class="dropdown-menu">
         <li class="logout_button">Logout</li>
-      </ul> -->
+      </ul> 
     </li>
 
     <div class="chat_window">

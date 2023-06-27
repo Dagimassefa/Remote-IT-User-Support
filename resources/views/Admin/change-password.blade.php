@@ -9,7 +9,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
   <title>@yield('title')</title>
 <base href="{{ \URL::to('/') }}">
 <link
@@ -185,12 +186,17 @@ referrerpolicy="no-referrer"
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-    
+               <li class="nav-item">
+                <a href="/add-teamleader" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add TeamLeader</p>
+                </a>
+              </li>
           <li class="nav-item">
             <a href="/register-team-leader" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Add New Team Leader
+                Assign TeamLeader
                 
               </p>
             </a>
@@ -232,6 +238,12 @@ referrerpolicy="no-referrer"
               <p>Change Password</p>
             </a>
           </li>
+          {{-- <li class="nav-item">
+            <a href="/statics" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Statistics</p>
+            </a>
+          </li> --}}
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -250,6 +262,7 @@ referrerpolicy="no-referrer"
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body class=" overflow flex items-center justify-center" style="background: #edf2f7;">
+      @include('flash-message')
         <div class="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
           <div class="container max-w-screen-lg mx-auto">
             <div>
@@ -264,18 +277,29 @@ referrerpolicy="no-referrer"
                   </div>
         
                   <div class="lg:col-span-2">
+                    <form action="{{ route('update-password') }}" method="post">
+                      @csrf
                     <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                         <div class="md:col-span-5">
                             <label for="city">Current Password</label>
-                            <input type="password" name="cpass" id="cpassword" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Enter Your Current Password" />
+                            <input type="password" name="old_password" id="cpassword" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Enter Your Current Password" />
+                            @error('old_password')
+                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
                           </div>
                           <div class="md:col-span-5">
                             <label for="city">New Password</label>
-                            <input type="password" name="npass" id="npassword" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Enter Your New Password" />
+                            <input type="password" name="new_password" id="npassword" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Enter Your New Password" />
+                            @error('new_password')
+                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
                           </div>
                           <div class="md:col-span-5">
                             <label for="city">Confirm New Password</label>
-                            <input type="password" name="cnpass" id="cnpassword" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Confirm Password" />
+                            <input type="password" name="new_password_confirmation" id="cnpassword" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Confirm Password" />
+                            @error('new_password_confirmation')
+                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
                           </div>
                       
         
@@ -285,8 +309,8 @@ referrerpolicy="no-referrer"
                           <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Change Password</button>
                         </div>
                       </div>
-        
                     </div>
+                  </form>
                   </div>
                 </div>
               </div>

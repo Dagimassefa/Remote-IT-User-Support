@@ -6,6 +6,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html lang="en">
 <head>
+  
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -186,12 +187,17 @@ referrerpolicy="no-referrer"
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-    
+               <li class="nav-item">
+                <a href="/add-teamleader" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add TeamLeader</p>
+                </a>
+              </li>
           <li class="nav-item">
             <a href="/register-team-leader" class="nav-link ">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Add New Team Leader
+               Assign TeamLeader
                 
               </p>
             </a>
@@ -233,6 +239,12 @@ referrerpolicy="no-referrer"
               <p>Change Password</p>
             </a>
           </li>
+          {{-- <li class="nav-item">
+            <a href="/statics" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Statistics</p>
+            </a>
+          </li> --}}
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -249,141 +261,57 @@ referrerpolicy="no-referrer"
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+          #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+          }
+          
+          #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+          }
+          
+          #customers tr:nth-child(even){background-color: #f2f2f2;}
+          
+          #customers tr:hover {background-color: #ddd;}
+          
+          #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: lightblue;
+            color: white;
+          }
+          </style>
     </head>
     <body class=" overflow flex items-center justify-center" style="background: #edf2f7;">
-        <div class="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
-      <div class="container max-w-screen-lg mx-auto">
-        <div>
-           
-            <h2 class="font-semibold text-xl text-gray-600">View Feedback From Staff Members</h2>
-            <div class="flex flex-col">
-                <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                  <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-                    <div class="overflow-hidden">
-                      <table class="min-w-full text-center">
-                        <thead class="border-b">
-                          <tr>
-                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
-                                E-mail
-                            </th>
-                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
-                                Name
-                            </th>
-                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
-                              Comment
-                            </th>
-                            
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr class="border-b bg-green-100 border-green-200">
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Technician1@aau.edu.et
-                            </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Technician1
-                              </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Good
-                              </td>
-                             
-                          </tr>
-                          <tr class="border-b bg-green-100 border-green-200">
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Technician2@aau.edu.et
-                            </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Technician2
-                              </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Nice
-                              </td>
-                             
-                          </tr>
-                          <tr class="border-b bg-green-100 border-green-200">
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Technician3@aau.edu.et
-                            </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Technician3
-                              </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Great
-                              </td>
-                             
-                          </tr>
-                          <tr class="border-b bg-green-100 border-green-200">
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Technician4@aau.edu.et
-                            </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Technician4
-                              </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Excellent
-                              </td>
-                             
-                          </tr>
-                          <tr class="border-b bg-green-100 border-green-200">
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Technician5@aau.edu.et
-                            </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Technician5
-                              </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Not Bad
-                              </td>
-                             
-                          </tr>
-                          <tr class="border-b bg-green-100 border-green-200">
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Technician6@aau.edu.et
-                            </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Technician6
-                              </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Acceptable
-                              </td>
-                             
-                          </tr>
-                          <tr class="border-b bg-green-100 border-green-200">
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Technician7@aau.edu.et
-                            </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Technician7
-                              </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Meh
-                              </td>
-                             
-                          </tr>
-                          <tr class="border-b bg-green-100 border-green-200">
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Technician8@aau.edu.et
-                            </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Technician8
-                              </td>
-                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                                Satisfied
-                              </td>
-                             
-                          </tr>
-                          
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-</div>
-    
-        
-      </div>
-    </div>
+      <h1 class="font-semibold text-xl text-gray-600" style="margin:10px">View Feedback From Staff Members</h1>
+
+<table id="customers" style="margin-left:15px;margin-right:25px;margin-top:15px " >
+  <tr>
+    <th> User ID</th>
+    <th>Feedback Request</th>
+    <th>FullName</th>
+    <th> E-mail</th>
+    <th>Comments</th>
+    <th>Feedback ID</th>
+  </tr>
+  
+    @foreach ($data as $row)
+    <tr>
+      <td>{{ $row->user_id }}</td>
+      <td>{{ $row->feedback_request }}</td>
+      <td>{{ $row->FullName }}</td>
+      <td>{{ $row->Email }}</td>
+      <td>{{ $row->Comments }}</td>
+      <td>{{ $row->FeedbackId}}</td>
+
+    </tr>
+  @endforeach
+ 
+</table>
     </body>
     </html>
   </div>

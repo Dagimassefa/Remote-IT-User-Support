@@ -6,10 +6,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html lang="en">
 <head>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
   <title>@yield('title')</title>
 <base href="{{ \URL::to('/') }}">
 <link
@@ -185,66 +188,22 @@ referrerpolicy="no-referrer"
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-    
-          <li class="nav-item">
-            <a href="/add-tech" class="nav-link ">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Add a New Technician
-                
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/assign-tech" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Assign Technician
-                
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/new-support-request" class="nav-link active">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                New Support Request List
-                
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/list-of-out-of-use-devices" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                List of Out of Use Devices
-                
-              </p>
-            </a>
-          </li>
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link ">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Number of Requests
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/solved-request" class="nav-link ">
+               <li class="nav-item">
+                <a href="/add-teamleader" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Solved Requests</p>
+                  <p>Add TeamLeader</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="/unsolved-request" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Unsolved Requests</p>
-                </a>
-              </li>
-            </ul>
+          <li class="nav-item">
+            <a href="/register-team-leader" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Assign TeamLeader
+                
+              </p>
+            </a>
           </li>
+          
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -255,30 +214,34 @@ referrerpolicy="no-referrer"
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/view-report-leader" class="nav-link ">
+                <a href="/view-report" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Report</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/generate-report-leader" class="nav-link">
+                <a href="/generate-report-admin" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Generate Report</p>
                 </a>
               </li>
+              
             </ul>
           </li>
           <li class="nav-item">
-            <a href="/change-password-teamleader" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-               Change Password
-                
-              </p>
+            <a href="/view-feedback" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>View Feedback</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="/statics" class="nav-link">
+            <a href="/change-password" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Change Password</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/statics" class="nav-link active">
               <i class="far fa-circle nav-icon"></i>
               <p>Statistics</p>
             </a>
@@ -298,58 +261,61 @@ referrerpolicy="no-referrer"
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-          #customers {
-            font-family: Arial, Helvetica, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-          }
-          
-          #customers td, #customers th {
-            border: 1px solid #ddd;
-            padding: 8px;
-          }
-          
-          #customers tr:nth-child(even){background-color: #f2f2f2;}
-          
-          #customers tr:hover {background-color: #ddd;}
-          
-          #customers th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: left;
-            background-color: lightblue;
-            color: white;
-          }
-          </style>
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body class=" overflow flex items-center justify-center" style="background: #edf2f7;">
-      <h1 class="font-semibold text-xl text-gray-600" style="margin:10px">New Support Request</h1>
-{{-- FullName, Email, FacultyName, Department, OfficeNo, photo, PhoneNo, Date, SupportStatus, RequestNo, user_id --}}
-      <table id="customers" style="margin-left:15px;margin-right:25px;margin-top:15px " >
-        <tr>
-          <th>FullName</th>
-          <th>Email</th>
-          <th>Faculty Name</th>
-          <th>Department</th>
-          <th>Office No</th>
-          <th>Request No</th>
-        </tr>
         
-          @foreach ($supportdata as $row)
-          <tr>
-            <td>{{ $row->FullName }}</td>
-            <td>{{ $row->Email }}</td>
-            <td>{{ $row->FacultyName }}</td>
-            <td>{{ $row->Department }}</td>
-            <td>{{ $row->OfficeNo }}</td>
-            <td>{{ $row->RequestNo}}</td>
-      
-          </tr>
-        @endforeach
-       
-      </table>
+<section class="content" style="margin-left:20px;margin-right:20px;margin-top:50px;">
+
+	<label for="cars">Select Chart Style</label>
+	<select name="chart" onchange="myFunction()" class="form-control" id="chart" style="width:120px;">
+		<option value="pie">Pie</option>
+		<option value="column">Column</option>
+		<option value="pyramid">Pyramid</option>
+		<option value="bar">Bar</option>
+	</select>
+
+    {{--  Chart Out Put is printinh here  --}}
+	
+	<div class="product-index" align="right" style="margin-top:40px;">
+		<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+	</div>
+
+
+</section>
+
+<script>
+
+function myFunction() 
+{
+  var chartType = document.getElementById("chart").value;
+
+  var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	title: {
+		text: "AAU Campus Report"
+	},
+	subtitles: [{
+		text: "Sorted by Campus Name"
+	}],
+	data: [{
+	    type:chartType, //"column",  type: "pie",
+		yValueFormatString: "#,##0.\"\"",
+		indexLabel: "{label} ({y})",
+		dataPoints: <?php echo json_encode($data, JSON_NUMERIC_CHECK); ?>
+	}]
+});
+chart.render();
+}
+
+// window.onload = function() {
+
+ 
+// }
+</script>
+<body>
+
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     </body>
     </html>
   </div>
@@ -385,3 +351,7 @@ referrerpolicy="no-referrer"
 <script src="dist/js/adminlte.min.js"></script>
 </body>
 </html>
+
+
+
+

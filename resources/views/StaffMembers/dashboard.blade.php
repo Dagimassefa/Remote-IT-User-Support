@@ -24,6 +24,8 @@
           </div>
 
           <div class="lg:col-span-2">
+            <form action="{{ route('support-request') }}" method="post">
+              @csrf
             <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
               <div class="md:col-span-5">
                 <label for="full_name">Reported By: Name</label>
@@ -37,46 +39,31 @@
              
               <div class="md:col-span-3">
                 <label for="address">Faculty</label>
-                <input type="text" name="address" id="address" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Faculty Name" />
+                <input type="text" name="faculty" id="address" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Faculty Name" />
               </div>
 
               <div class="md:col-span-2">
                 <label for="city">Department</label>
-                <input type="text" name="city" id="city" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Department Name" />
+                <input type="text" name="dep" id="city" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Department Name" />
               </div>
               <div class="md:col-span-5">
                 <label for="email">Floor / Office</label>
                 <input type="text" name="floor" id="floor" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Floor, Office Number" />
               </div>
               <div class="md:col-span-5">
-                <label for="email">Image</label>
-                <input type="file" src="img_submit.gif" alt="Submit" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50">
-              </div>
-              <div class="md:col-span-2">
                 <label for="country">Tel</label>
-                <input type="text" name="address" id="address" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Telephone No." />
-              </div>
-
-              <div class="md:col-span-1">
-                <label for="state">Date</label>
-                <div class="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
-                    <input type="date" id="start" name="trip-start"
-                    value="<?php echo date('Y-m-d'); ?>"
-                    >
-                </div>
-              </div>
-
-              <div class="md:col-span-2">
-                <label for="zipcode">Time</label>
-                <input type="time" name="zipcode" id="zipcode" class="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="Time (LT)" value="" />
+                <input type="text" name="tel" id="address" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Telephone No." />
               </div>
 
               
-              <div class="md:col-span-5">
-                <label for="city">Problem Description</label>
-                <textarea name="" id="" cols="30" rows="10" class="h-30 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="Write your problem here..." style="resize: none;"></textarea>
-               
-              </div>
+
+              {{-- <div class="md:col-span-2">
+                <label for="zipcode">Time</label>
+                <input type="time" name="time" id="zipcode" class="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="Time (LT)" value="" />
+              </div> --}}
+
+              
+
       
               <div class="md:col-span-5 text-right">
                 <div class="inline-flex items-end">
@@ -85,6 +72,7 @@
               </div>
 
             </div>
+            </form>
           </div>
         </div>
       </div>
